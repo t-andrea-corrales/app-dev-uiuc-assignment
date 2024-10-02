@@ -5,9 +5,12 @@ from expiring import expired_or_expires_soon
 def load_data(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
+def export_to_txt(file_name, data):
+    with open(file_name, 'w') as f:
+        f.write(json.dumps(data, indent=4))
 
 def main():
-    file_path = 'trainings.txt'
+    file_path = 'output.txt'
     data = load_data(file_path)
     print("Part 1: Training Completion Counts")
     completed_count = count_completed_trainings(data)
